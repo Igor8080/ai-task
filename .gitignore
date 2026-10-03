@@ -1,0 +1,17 @@
+.venv/
+venv/
+env/
+
+__pycache__/
+*.pyc
+
+.cache/
+huggingface/
+models/
+
+.env
+
+.idea/
+.vscode/
+
+*.mp4
