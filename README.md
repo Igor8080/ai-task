@@ -1,83 +1,64 @@
-## Содержание
+# Sentiment Analysis API
 
-1. Анализ текста
-2. Распознавание речи
-3. Классификация изображений
-4. Детекция объектов на видео
-5. Локальная LLM
+Небольшое API для определения тональности текста на русском языке.
 
----
+Для анализа используется модель `blanchefort/rubert-base-cased-sentiment`, а API реализовано с помощью FastAPI.
 
-## 1. Анализ текста
+## Установка
 
-Модель:
+Создать виртуальное окружение:
 
-blanchefort/rubert-base-cased-sentiment
+```bash
+python -m venv .venv
+```
 
-Технология:
+Активировать его в Windows:
 
-Hugging Face Transformers
+```bash
+.venv\Scripts\activate
+```
 
-Задача:
+Установить зависимости:
 
-определение тональности русского текста.
+```bash
+pip install -r requirements.txt
+```
 
----
+## Запуск
 
-## 2. Аудио
+```bash
+uvicorn app.main:app --reload
+```
 
-Модель:
+Документация API:
 
-openai/whisper-small
+`http://127.0.0.1:8000/docs`
 
-Технология:
+## Пример
 
-Hugging Face Transformers / PyTorch
+Запрос:
 
-Задача:
+```json
+{
+  "text": "Мне очень понравился этот фильм!"
+}
+```
 
-speech-to-text.
+Ответ:
 
----
+```json
+{
+  "label": "POSITIVE",
+  "score": 0.99
+}
+```
 
-## 3. Изображения
+## Тесты
 
-Модель:
+Запуск тестов:
 
-ResNet-50
+```bash
+python -m pytest
+```
 
-Технология:
-
-PyTorch / torchvision
-
-Задача:
-
-классификация изображений.
-
----
-
-## 4. Видео
-
-Модель:
-
-facebook/detr-resnet-50
-
-Технология:
-
-Hugging Face Transformers / PyTorch
-
-Задача:
-
-обнаружение объектов на видео.
-
----
-
-## 5. LLM
-
-Модель:
-
-Qwen2.5-7B-Instruct
-
-Запуск:
-
-локально через Ollama.
+Тесты также автоматически запускаются через GitHub Actions при отправке изменений в репозиторий.
