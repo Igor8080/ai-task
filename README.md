@@ -1,83 +1,24 @@
-## Содержание
+# PrEng. RecSys — Movie Recommendation System
 
-1. Анализ текста
-2. Распознавание речи
-3. Классификация изображений
-4. Детекция объектов на видео
-5. Локальная LLM
+Реализация рекомендательной системы на датасете MovieLens.
 
----
+## Реализованные подходы
 
-## 1. Анализ текста
+1. **Popularity-based baseline** — популярные фильмы.
+2. **Content-Based** — рекомендации на основе жанров и названий с TF-IDF и cosine similarity.
+3. **Item-Based Collaborative Filtering** — рекомендации на основе пользовательских оценок.
+4. **Hybrid** — объединение content-based и collaborative scores.
 
-Модель:
+## Структура
 
-blanchefort/rubert-base-cased-sentiment
-
-Технология:
-
-Hugging Face Transformers
-
-Задача:
-
-определение тональности русского текста.
-
----
-
-## 2. Аудио
-
-Модель:
-
-openai/whisper-small
-
-Технология:
-
-Hugging Face Transformers / PyTorch
-
-Задача:
-
-speech-to-text.
-
----
-
-## 3. Изображения
-
-Модель:
-
-ResNet-50
-
-Технология:
-
-PyTorch / torchvision
-
-Задача:
-
-классификация изображений.
-
----
-
-## 4. Видео
-
-Модель:
-
-facebook/detr-resnet-50
-
-Технология:
-
-Hugging Face Transformers / PyTorch
-
-Задача:
-
-обнаружение объектов на видео.
-
----
-
-## 5. LLM
-
-Модель:
-
-Qwen2.5-7B-Instruct
-
-Запуск:
-
-локально через Ollama.
+```text
+recsys_project/
+├── data/
+├── src/
+│   ├── data.py
+│   ├── recommenders.py
+│   └── evaluation.py
+├── main.py
+├── requirements.txt
+└── README.md
+```
